@@ -32,4 +32,6 @@ xfce4-terminal --geometry=80x24+1+97 --title="端末エミュレータ" &
 ##rm -f /tmp/volume_osd_value
 ##python3.11 $HOME/bin/volume_osd_daemon.py &
 
+#numlockx
+
 exec fvwm3
