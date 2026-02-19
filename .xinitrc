@@ -13,12 +13,12 @@ uim-toolbar-gtk3 -1-1 &
 
 #wine#export WINEDEBUG=-all
 
-#setxkbmap jp
+#106jp#setxkbmap jp
 
 xset r rate 250 40
 xset m 5 3
 xrdb -merge ~/.Xresources
-xkbcomp -I$HOME/.xkb ~/.xkb/keymap/mykbd $DISPLAY
+#101us#xkbcomp -I$HOME/.xkb ~/.xkb/keymap/mykbd $DISPLAY
 
 xsetroot -solid \#5b468f
 xclock -update 1 -d -strftime '%Y-%m-%d(%a) %T' -geometry -1+1 -bg \#f8f8f7 &
@@ -32,6 +32,6 @@ xfce4-terminal --geometry=80x24+1+97 --title="端末エミュレータ" &
 ##rm -f /tmp/volume_osd_value
 ##python3.11 $HOME/bin/volume_osd_daemon.py &
 
-#numlockx
+#numlock#numlockx
 
 exec fvwm3
