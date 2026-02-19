@@ -116,7 +116,9 @@ sudo pkg install -y -q xlockmore
 sudo pkg install -y -q lupe
 sudo pkg install -y -q xpad3
 
+# 8-3. Firefoxで、ダウンロードフォルダーを「~/Downloads」に変更したい
 # 8-10. Firefoxの初期設定を、起動せずに行いたい
+mkdir -p ~/Downloads
 sudo mkdir -p /usr/local/lib/firefox/distribution
 sudo cp ./policies.json /usr/local/lib/firefox/distribution
 
@@ -127,9 +129,8 @@ cp -r ./.config/xpad ~/.config
 # 9-19. ⾳量調整時に、画⾯上に⾳量・ミュート状態を表⽰したい
 mkdir -p ~/bin
 cp ./bin/volume_osd_client.tcsh ~/bin/
-cp ./bin/volume_osd_daemon.tcsh ~/bin/
+cp ./bin/volume_osd_daemon.py ~/bin/
 chmod +x ~/bin/volume_osd_client.tcsh
-chmod +x ~/bin/volume_osd_daemon.tcsh
 sudo pkg install -y -q webfonts
 
 # 3.初期設定 (音量キー設定)
@@ -154,7 +155,7 @@ sudo touch /etc/motd.template
 
 # 8-6.chromium（ウェブブラウザ）を使用したい
 sudo pkg install -y -q chromium webfonts
-mkdir ~/Downloads
+mkdir -p ~/Downloads
 mkdir -p ~/.config/chromium/Default
 cp -r ./.config/chromium/Default ~/.config/chromium/
 
