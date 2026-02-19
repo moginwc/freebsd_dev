@@ -189,7 +189,7 @@ AddToMenu Programs    "プログラム"                      Title
 +                     "スクリーンショット..."           Popup Screenshot
 ##+                     ""                                Nop
 ##+                     "地理情報システム QGIS..."        Exec qgis
-##+                     "3Dモデリング OpenSCAD..."        Exec openscad
+#+                     "3Dモデリング OpenSCAD..."        Exec openscad
 +                     ""                                Nop
 +                     "付箋..."                         Exec xpad -s
 ##+                     ""                                Nop
