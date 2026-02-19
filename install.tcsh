@@ -18,7 +18,7 @@ set ver = "freebsd_dev"
 	lan_interface "LAN interface: re0 (Default: em0)" off \
 	keyboard_type "Keyboard layout: 106 JP (Default: 101 US)" off \
 	numlock "Enable NumLock for X (Default: Off)" off \
-	volume_keys "Use multimedia keys as volume controls (Default: ALT+CTRL+↑,↓,M)" off > /dev/tty) |& tee ${paramfile} > /dev/null
+	volume_keys "Use multimedia volume keys (Default: ALT+CTRL+↑,↓,M)" off > /dev/tty) |& tee ${paramfile} > /dev/null
 
 # 選択結果を読み込む
 set selected = `cat ${paramfile}`
