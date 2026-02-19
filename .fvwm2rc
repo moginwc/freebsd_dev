@@ -310,14 +310,14 @@ Mouse 3 I A Menu Window-Ops2 Nop
 #Key M                    A CM Exec mixer vol.mute=^
 
 # ボリュームUP/DOWN/MUTEボタンの動作(OSD版)
-##Key XF86AudioRaiseVolume A A Exec tcsh -c "mixer vol.volume=+0.05; volume_osd_client.tcsh"
-##Key XF86AudioLowerVolume A A Exec tcsh -c "mixer vol.volume=-0.05; volume_osd_client.tcsh"
-##Key XF86AudioMute        A A Exec tcsh -c "mixer vol.mute=^;       volume_osd_client.tcsh mute"
+#volume_keys_true#Key XF86AudioRaiseVolume A A Exec tcsh -c "mixer vol.volume=+0.05; volume_osd_client.tcsh"
+#volume_keys_true#Key XF86AudioLowerVolume A A Exec tcsh -c "mixer vol.volume=-0.05; volume_osd_client.tcsh"
+#volume_keys_true#Key XF86AudioMute        A A Exec tcsh -c "mixer vol.mute=^;       volume_osd_client.tcsh mute"
 
 # 音量操作(OSD版)(CTRL+ALT+↑で音量大、CTRL+ALT+↓で音量小、CTRL+ALT+Mでミュート/解除)
-#Key Up                   A CM Exec tcsh -c "mixer vol.volume=+0.05; volume_osd_client.tcsh"
-#Key Down                 A CM Exec tcsh -c "mixer vol.volume=-0.05; volume_osd_client.tcsh"
-#Key M                    A CM Exec tcsh -c "mixer vol.mute=^;       volume_osd_client.tcsh mute"
+#volume_keys_false#Key Up                   A CM Exec tcsh -c "mixer vol.volume=+0.05; volume_osd_client.tcsh"
+#volume_keys_false#Key Down                 A CM Exec tcsh -c "mixer vol.volume=-0.05; volume_osd_client.tcsh"
+#volume_keys_false#Key M                    A CM Exec tcsh -c "mixer vol.mute=^;       volume_osd_client.tcsh mute"
 
 # ALT+F4でアクティブウインドウを閉じる
 key F4 A M Close
