@@ -178,7 +178,7 @@ AddToMenu Programs    "プログラム"                      Title
 ##+                     "ファイルマネージャ..."           Exec dbus-launch thunar
 +                     "カレンダ..."                     Exec xterm -geometry 70x38 -T カレンダ -e tcsh -c "cal -y; stty -icanon; dd bs=1 count=1"
 #+                     "メールツール..."                 Exec sylpheed
-##+                     "メールツール Gmail..."           Exec chrome --no-default-browser-check https://mail.google.com/mail/
+##+                     "メールツール..."                 Exec chrome --no-default-browser-check https://mail.google.com/mail/
 +                     ""                                Nop
 +                     "時計..."                         Exec xclock -name "時計"
 +                     "電卓..."                         Exec xcalc
