@@ -94,7 +94,7 @@ cp ./.Xresources ~
 # 端末エミュレータのインストールと設定 (3.初期設定 端末エミュレータ 端末エミュレータの設定)
 sudo pkg install -y -q xfce4-terminal
 mkdir -p ~/.config/xfce4/xfconf/xfce-perchannel-xml
-cp ./.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-terminal.xml ~/.confug/xfce4/xfconf/xfce-perchannel-xml/
+cp ./.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-terminal.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/
 
 # 入力メソッド・日本語入力システムのインストールと設定 (3.初期設定 日本語入力1,2)
 sudo pkg install -y -q ja-uim-anthy uim-gtk2 uim-gtk3 uim-qt5 uim-qt6
