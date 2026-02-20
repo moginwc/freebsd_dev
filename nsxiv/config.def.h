@@ -13,7 +13,7 @@ static const char *MARK_FG[]  = { "Nsxiv.mark.foreground",      NULL };
 #if HAVE_LIBFONTS
 static const char *BAR_BG[]   = { "Nsxiv.bar.background",       NULL };
 static const char *BAR_FG[]   = { "Nsxiv.bar.foreground",       NULL };
-static const char *BAR_FONT[] = { "Nsxiv.bar.font",            "IPAGothic:size=10.5" };
+static const char *BAR_FONT[] = { "Nsxiv.bar.font",            "IPAGothic:size=10.5"" };
 
 /* if true, statusbar appears on top of the window */
 static const bool TOP_STATUSBAR = false;
@@ -186,7 +186,7 @@ static const keymap_t keys[] = {
 	{ 0,            XK_A,             i_toggle_alpha,       None },
 	{ 0,            XK_s,             i_slideshow,          None },
 
-	/* 画像表示モード */
+	/* 画像表⽰モード */
 	{ 0, XK_Right, i_navigate, +1 },   /* →キーで次画像 */
 	{ 0, XK_Down,  i_navigate, +1 },   /* ↓キーで次画像 */
 	{ 0, XK_Left,  i_navigate, -1 },   /* ←キーで前画像 */
