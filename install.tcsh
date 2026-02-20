@@ -32,7 +32,7 @@ sudo service powerd enable
 
 # グラフィックドライバーのインストール (3.初期設定 グラフィックドライバー)
 sudo pkg install -y -q drm-515-kmod
-if (" ${selected}:q " =~ "* use_amdgpu *") then
+if (" ${selected:q} " =~ "* use_amdgpu *") then
 	sudo sysrc kld_list+=amdgpu
 else
 	sudo sysrc kld_list+=i915kms
@@ -44,7 +44,7 @@ sudo service pf enable
 sudo sysrc pf_rules+=/etc/pf.conf
 sudo cp etc_pf.conf /etc/pf.conf
 
-if (" ${selected}:q " =~ "* use_re0 *") then
+if (" ${selected:q} " =~ "* use_re0 *") then
 	sed -i '' 's/ em0 / re0 /g' /etc/pf.conf
 endif
 
@@ -75,7 +75,7 @@ sudo pkg install -y -q ja-font-ipa
 # ウィンドウシステムの初期設定 (3.初期設定 ウインドウ関係2,3)
 cp ./.xinitrc ~
 sed -i '' 's/^##//g' ~/.xinitrc
-if (" ${selected}:q " =~ "* use_jp_keyboard *") then
+if (" ${selected:q} " =~ "* use_jp_keyboard *") then
 	sed -i '' 's/^#106jp#//g' ~/.xinitrc
 	sed -i '' 's/^xkbcomp /#xkbcomp /g' ~/.xinitrc
 endif
@@ -138,14 +138,14 @@ chmod +x ~/bin/volume_osd_client.tcsh
 sudo pkg install -y -q webfonts
 
 # 3.初期設定 (音量キー設定)
-if (" ${selected}:q " =~ "* use_volume_keys *") then
+if (" ${selected:q} " =~ "* use_volume_keys *") then
 	sed -i '' 's/^#volume_keys_true#//g' ~/.fvwm2rc
 else
 	sed -i '' 's/^#volume_keys_false#//g' ~/.fvwm2rc
 endif
 
 # 6-7.NumLockを効かせたい
-if (" ${selected}:q " =~ "* enable_numlock *") then
+if (" ${selected:q} " =~ "* enable_numlock *") then
 	sudo pkg install -y numlockx
 	sed -i '' 's/^#numlock#//g' ~/.xinitrc
 endif
@@ -176,7 +176,7 @@ sudo pkg install -y -q xbatt
 # 8-15.システム情報を表示したい(conky設定)
 sudo pkg install -y -q conky
 cp ./.conkyrc ~
-if (" ${selected}:q " =~ "* use_re0 *") then
+if (" ${selected:q} " =~ "* use_re0 *") then
 	sed -i '' 's/ em0/ re0/g' ~/.conkyrc
 endif
 
@@ -229,6 +229,13 @@ set addstr = '#ifconfig_em0_ipv6="inet6 accept_rtadv"'
 grep -F -- "$addstr" /etc/rc.conf > /dev/null
 if ( $status != 0 ) then
     echo "$addstr" | sudo tee -a /etc/rc.conf
+endif
+
+# 6-6.スピーカーやイヤホン端子から音が出るようにしたい *コメントアウト状態にて
+set addstr = '#hw.snd.default_unit=0'
+grep -F -- "$addstr" /etc/rc.conf > /dev/null
+if ( $status != 0 ) then
+    echo "$addstr" | sudo tee -a /etc/sysctl.conf
 endif
 
 # 11-1.mozcのインストールと初期設定 (*ここでは初期設定のみでインストールはしない)
