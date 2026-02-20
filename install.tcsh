@@ -15,10 +15,10 @@ set ver = "freebsd_dev"
 	--title "FreeBSD Custom Installer" \
 	--checklist "Select your options:" 12 72 5 \
 	use_amdgpu "Use AMD GPU driver (Default: Intel GPU driver)" off \
-	lan_interface "LAN interface: re0 (Default: em0)" off \
-	keyboard_type "Keyboard layout: 106 JP (Default: 101 US)" off \
-	numlock "Enable NumLock for X (Default: Off)" off \
-	volume_keys "Use multimedia volume keys (Default: ALT+CTRL+↑,↓,M)" off > /dev/tty) |& tee ${paramfile} > /dev/null
+	use_re0 "LAN interface: re0 (Default: em0)" off \
+	use_jp_keyboard "Keyboard layout: 106 JP (Default: 101 US)" off \
+	enable_numlock "Enable NumLock for X (Default: Off)" off \
+	use_volume_keys "Use multimedia volume keys (Default: ALT+CTRL+↑,↓,M)" off > /dev/tty) |& tee ${paramfile} > /dev/null
 
 # 選択結果を読み込む
 set selected = `cat ${paramfile}`
@@ -43,6 +43,10 @@ sudo pw groupmod video -m pcuser
 sudo service pf enable
 sudo sysrc pf_rules+=/etc/pf.conf
 sudo cp etc_pf.conf /etc/pf.conf
+
+if (" ${selected}:q " =~ "* use_re0 *") then
+	sed -i '' 's/ em0 / re0 /g' ~/.xinitrc
+endif
 
 # vimエディターをインストールする (3.初期設定 vimエディタ)
 sudo pkg install -y -q vim
@@ -71,7 +75,7 @@ sudo pkg install -y -q ja-font-ipa
 # ウィンドウシステムの初期設定 (3.初期設定 ウインドウ関係2,3)
 cp ./.xinitrc ~
 sed -i '' 's/^##//g' ~/.xinitrc
-if (" ${selected}:q " =~ "* keyboard_type *") then
+if (" ${selected}:q " =~ "* use_jp_keyboard *") then
 	sed -i '' 's/^#106jp#//g' ~/.xinitrc
 	sed -i '' 's/^xkbcomp /#xkbcomp /g' ~/.xinitrc
 endif
@@ -122,7 +126,7 @@ mkdir -p ~/Downloads
 sudo mkdir -p /usr/local/lib/firefox/distribution
 sudo cp ./policies.json /usr/local/lib/firefox/distribution
 
-# 8-4. 付箋アプリ（Xpad）を使いたい
+# 8-4. 付箋アプリ(Xpad)を使いたい
 mkdir -p ~/.config/xpad
 cp -r ./.config/xpad ~/.config
 
@@ -134,14 +138,14 @@ chmod +x ~/bin/volume_osd_client.tcsh
 sudo pkg install -y -q webfonts
 
 # 3.初期設定 (音量キー設定)
-if (" ${selected}:q " =~ "* volume_keys *") then
+if (" ${selected}:q " =~ "* use_volume_keys *") then
 	sed -i '' 's/^#volume_keys_true#//g' ~/.fvwm2rc
 else
 	sed -i '' 's/^#volume_keys_false#//g' ~/.fvwm2rc
 endif
 
 # 6-7.NumLockを効かせたい
-if (" ${selected}:q " =~ "* numlock *") then
+if (" ${selected}:q " =~ "* enable_numlock *") then
 	sudo pkg install -y numlockx
 	sed -i '' 's/^#numlock#//g' ~/.xinitrc
 endif
@@ -159,6 +163,9 @@ mkdir -p ~/Downloads
 mkdir -p ~/.config/chromium/Default
 cp -r ./.config/chromium/Default ~/.config/chromium/
 
+# 8-2. ハングル⽂字や簡体字・繁体字、絵⽂字を表⽰させたい
+sudo pkg install -y -q noto-sans-jp noto-emoji
+
 # 9-1.デスクトップに、アプリを起動するランチャーを表⽰させたい
 # 9-2.ランチャーに、システム負荷やバッテリー状態を表⽰させたい
 cp /usr/local/lib/firefox/browser/chrome/icons/default/default32.png ~/icons/firefox.png
@@ -169,6 +176,9 @@ sudo pkg install -y -q xbatt
 # 8-15.システム情報を表示したい(conky設定)
 sudo pkg install -y -q conky
 cp ./.conkyrc ~
+if (" ${selected}:q " =~ "* use_re0 *") then
+	sed -i '' 's/ em0/ re0/g' ~/.conkyrc
+endif
 
 # 文字コード表
 cp -r ./html ~
@@ -222,31 +232,32 @@ if ( $status != 0 ) then
 endif
 
 # 11-1.mozcのインストールと初期設定 (*ここでは初期設定のみでインストールはしない)
-cp -r ./.uim.d-mozc/customs/custom-mozc.scm ~/.uim.d/customs/
+cp ./.uim.d-mozc/customs/custom-mozc.scm ~/.uim.d/customs/
 mkdir ~/.mozc
 /usr/local/bin/xxd -r -p ./.mozc/config1.db.hex > ~/.mozc/config1.db
 
 # 8-14.サムネイル一覧から画像を選択して表示したい (nsxiv)
 sudo pkg install -y -q nsxiv
 mkdir -p ./config/nsxiv/exec
-cp ./.config/nsxiv/exec/* ~/.config/nsxiv/exec/
+cp ./.config/nsxiv/exec/image-info ~/.config/nsxiv/exec/
+cp ./.config/nsxiv/exec/key-handler ~/.config/nsxiv/exec/
 chmod +x ~/.config/nsxiv/exec/image-info
 chmod +x ~/.config/nsxiv/exec/key-handler
 sudo pkg install -y -q p5-Image-ExifTool
 
-# 8-26. 軽量画像ビュアnsxivをカスタマイズして使いたい (nsxivバージョン33であることが前提)
-#sudo pkg install -y -q gmake git
-#rehash # gmakeを認識させる
-#mkdir ~/work
-#pushd ~/work
-#git clone https://codeberg.org/nsxiv/nsxiv.git
-#pushd ./nsxiv
-#cp ~/${ver}/nsxiv/config.h .
-#cp ~/${ver}/nsxiv/config.mk .
-#gmake CC=cc
-#sudo gmake install
-#popd
-#popd
+# 8-26. 軽量画像ビュアnsxivをカスタマイズして使いたい (nsxivバージョン34であることが前提)
+sudo pkg install -y -q gmake git
+rehash # gmakeを認識させる
+mkdir ~/work
+pushd ~/work
+git clone https://codeberg.org/nsxiv/nsxiv.git
+pushd ./nsxiv
+cp ~/${ver}/nsxiv/config.def.h .
+cp ~/${ver}/nsxiv/config.mk .
+gmake CC=cc
+sudo gmake install
+popd
+popd
 
 # サンプル画像のコピー
 mkdir ~/Pictures
@@ -254,6 +265,7 @@ magick ./colorbar1.svg ~/Pictures/colorbar1.png
 magick ./colorbar2.svg ~/Pictures/colorbar2.png
 magick ./colorbar3.svg ~/Pictures/colorbar3.png
 magick ./colorbar4.svg ~/Pictures/colorbar4.png
+cp /usr/local/share/doc/ImageMagick-7/images/mountains*.jpg ~/Pictures/
 
 # 8-11.GIMPを使いたい
 sudo pkg install -y -q gimp
