@@ -45,7 +45,7 @@ sudo sysrc pf_rules+=/etc/pf.conf
 sudo cp etc_pf.conf /etc/pf.conf
 
 if (" ${selected}:q " =~ "* use_re0 *") then
-	sed -i '' 's/ em0 / re0 /g' ~/.xinitrc
+	sed -i '' 's/ em0 / re0 /g' /etc/pf.conf
 endif
 
 # vimエディターをインストールする (3.初期設定 vimエディタ)
