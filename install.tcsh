@@ -299,6 +299,27 @@ sudo pkg install -y -q feh
 # 13-12.自作のmanページを作成したい
 cp -r ./man ~
 
+# 8-23.ファイル管理ソフトThunarを使いたい、のインストールと設定ファイルのコピー
+sudo pkg install -y -q thunar thunar-archive-plugin xarchiver
+
+xdg-mime default userapp-vim-readonly.desktop text/plain
+xdg-mime default userapp-feh.desktop image/png
+xdg-mime default userapp-feh.desktop image/jpeg
+
+mkdir -p ~/.local/share/applications
+cp ./.local/share/applications/* ~/.local/share/applications
+chmod +x ~/bin/conv_img_480s.tcsh
+
+mkdir -p ~/.local/share/Thunar/sendto
+cp ./.local/share/Thunar/sendto/* ~/.local/share/Thunar/sendto/
+
+mkdir -p ~/.config/Thunar
+cp ./.config/Thunar/uca.xml ~/.config/Thunar/
+cp ./.config/gtk-3.0/bookmarks ~/.config/gtk-3.0/
+
+mkdir -p ~/.config/xfce4/xfconf/xfce-perchannel-xml
+cp ./.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/
+
 # 7-3.Windowsやmacとファイル共有したい(SMB)
 sudo pkg install -y -q samba416
 sudo service samba_server enable
