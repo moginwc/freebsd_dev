@@ -14,12 +14,12 @@ set ver = "freebsd_dev"
 set selected = `dialog \
 	--title "FreeBSD Custom Installer" \
     --stdout \
-	--checklist "Select your options:" 12 72 5 \
+	--checklist "Select your options:" 12 76 5 \
 	use_amdgpu "Use AMD GPU driver (Default: Intel GPU driver)" off \
 	use_re0 "LAN interface: re0 (Default: em0)" off \
 	use_jp_keyboard "Keyboard layout: 106 JP (Default: 101 US)" off \
 	enable_numlock "Enable NumLock for X (Default: Off)" off \
-	use_volume_keys "Use multimedia volume keys (Default: ALT+CTRL+↑,↓,M)" off`
+	use_volume_keys "Use volume keys (Default: ALT+CTRL+↑,↓,M)" off`
 
 # システム起動時に ntpdが起動するよう設定する (3.初期設定 ntpd)
 sudo service ntpd enable
