@@ -43,7 +43,7 @@ sudo sysrc pf_rules+=/etc/pf.conf
 sudo cp etc_pf.conf /etc/pf.conf
 
 if (" ${selected:q} " =~ "* use_re0 *") then
-	sed -i '' 's/ em0 / re0 /g' /etc/pf.conf
+	sudo sed -i '' 's/ em0 / re0 /g' /etc/pf.conf
 endif
 
 # vimエディターをインストールする (3.初期設定 vimエディタ)
@@ -189,7 +189,7 @@ sudo cp ./root_boot.config /boot.config
 # UEFIブート向け
 grep '^splash=' /boot/loader.conf > /dev/null
 if ( $status == 0 ) then
-    sudo sed -i '' 's/^splash=.*/splash="/boot/images/freebsd-brand-rev.png"/' /boot/loader.conf
+    sudo sed -i '' 's/^splash=.*/splash="\/boot\/images\/freebsd-brand-rev.png"/' /boot/loader.conf
 else
     echo 'splash="/boot/images/freebsd-brand-rev.png"' | sudo tee -a /boot/loader.conf
 endif
