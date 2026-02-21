@@ -13,6 +13,7 @@ set ver = "freebsd_dev"
 # インストール選択画面の表示
 set selected = `dialog \
 	--title "FreeBSD Custom Installer" \
+    --stdout \
 	--checklist "Select your options:" 12 72 5 \
 	use_amdgpu "Use AMD GPU driver (Default: Intel GPU driver)" off \
 	use_re0 "LAN interface: re0 (Default: em0)" off \
