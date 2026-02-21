@@ -186,7 +186,7 @@ static const keymap_t keys[] = {
 	{ 0,            XK_A,             i_toggle_alpha,       None },
 	{ 0,            XK_s,             i_slideshow,          None },
 
-	/* 画像表⽰モード */
+	/* 画像表示モード */
 	{ 0, XK_Right, i_navigate, +1 },   /* →キーで次画像 */
 	{ 0, XK_Down,  i_navigate, +1 },   /* ↓キーで次画像 */
 	{ 0, XK_Left,  i_navigate, -1 },   /* ←キーで前画像 */
