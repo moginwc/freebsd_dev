@@ -243,7 +243,7 @@ mkdir ~/.mozc
 
 # 8-14.サムネイル一覧から画像を選択して表示したい (nsxiv)
 sudo pkg install -y -q nsxiv
-mkdir -p ./config/nsxiv/exec
+mkdir -p ./.config/nsxiv/exec
 cp ./.config/nsxiv/exec/image-info ~/.config/nsxiv/exec/
 cp ./.config/nsxiv/exec/key-handler ~/.config/nsxiv/exec/
 chmod +x ~/.config/nsxiv/exec/image-info
