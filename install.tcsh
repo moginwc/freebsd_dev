@@ -128,7 +128,7 @@ sudo cp ./policies.json /usr/local/lib/firefox/distribution
 mkdir -p ~/.config/xpad
 cp -r ./.config/xpad ~/.config
 
-# 9-19. ⾳量調整時に、画⾯上に⾳量・ミュート状態を表⽰したい
+# 9-19. 音量調整時に、画面上に音量・ミュート状態を表示したい
 mkdir -p ~/bin
 cp ./bin/volume_osd_client.tcsh ~/bin/
 cp ./bin/volume_osd_daemon.py ~/bin/
@@ -155,7 +155,7 @@ sudo pkg install -y -q autocutsel
 sudo mv /etc/motd.template /etc/motd.template.old
 sudo touch /etc/motd.template
 
-# 8-2. ハングル⽂字や簡体字・繁体字、絵⽂字を表⽰させたい
+# 8-2. ハングル文字や簡体字・繁体字、絵文字を表示させたい
 sudo pkg install -y -q noto-sans-jp noto-emoji
 
 # 8-6.chromium（ウェブブラウザ）を使用したい
@@ -164,8 +164,8 @@ mkdir -p ~/Downloads
 mkdir -p ~/.config/chromium/Default
 cp -r ./.config/chromium/Default ~/.config/chromium/
 
-# 9-1.デスクトップに、アプリを起動するランチャーを表⽰させたい
-# 9-2.ランチャーに、システム負荷やバッテリー状態を表⽰させたい
+# 9-1.デスクトップに、アプリを起動するランチャーを表示させたい
+# 9-2.ランチャーに、システム負荷やバッテリー状態を表示させたい
 cp /usr/local/lib/firefox/browser/chrome/icons/default/default32.png ~/icons/firefox.png
 magick /usr/local/share/icons/hicolor/64x64/apps/chrome.png -resize 32x32 ~/icons/chrome.png
 sudo pkg install -y -q xload
