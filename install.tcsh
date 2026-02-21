@@ -314,12 +314,23 @@ cp ./.local/share/Thunar/sendto/* ~/.local/share/Thunar/sendto/
 
 mkdir -p ~/.config/Thunar
 cp ./.config/Thunar/uca.xml ~/.config/Thunar/
-cp ./bin/conv_img_480s.tcsh ~/bin/
-chmod +x ~/bin/conv_img_480s.tcsh
+cp ./bin/img_conv.tcsh ~/bin/
+chmod +x ~/bin/img_conv.tcsh
 cp ./.config/gtk-3.0/bookmarks ~/.config/gtk-3.0/
 
 mkdir -p ~/.config/xfce4/xfconf/xfce-perchannel-xml
 cp ./.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/
+
+mkdir -p ~/.config/xarchiver
+cp ./.config/xarchiver/xarchiverrc ~/.config/xarchiver/
+
+# 8-23.(ファイルタイプ表示名の変更)
+mkdir -p ~/.local/share/mime/packages
+cp /usr/local/share/mime/packages/freedesktop.org.xml ~/.local/share/mime/packages
+sed -i '' 's/平文テキストドキュメント/テキストファイル/g' ~/.local/share/mime/packages/freedesktop.org.xml
+sed -i '' 's/平文文書/テキストファイル/g' ~/.local/share/mime/packages/freedesktop.org.xml
+sed -i '' 's/目的符号文書/オブジェクトファイル/g' ~/.local/share/mime/packages/freedesktop.org.xml
+update-mime-database ~/.local/share/mime
 
 # 7-3.Windowsやmacとファイル共有したい(SMB)
 sudo pkg install -y -q samba416
