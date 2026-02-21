@@ -257,10 +257,15 @@ mkdir ~/work
 pushd ~/work
 git clone https://codeberg.org/nsxiv/nsxiv.git
 pushd ./nsxiv
-cp ~/${ver}/nsxiv/config.def.h .
-cp ~/${ver}/nsxiv/config.mk .
-gmake CC=cc
-sudo gmake install
+
+grep -Eq '^[[:space:]]*VERSION[[:space:]]*=[[:space:]]*34([[:space:]]|$)' ./config.mk
+if ($status == 0) then
+    cp ~/${ver}/nsxiv/config.def.h .
+    cp ~/${ver}/nsxiv/config.mk .
+    gmake CC=cc
+    sudo gmake install
+endif
+
 popd
 popd
 
