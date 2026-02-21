@@ -250,7 +250,7 @@ chmod +x ~/.config/nsxiv/exec/image-info
 chmod +x ~/.config/nsxiv/exec/key-handler
 sudo pkg install -y -q p5-Image-ExifTool
 
-# 8-26. 軽量画像ビュアnsxivをカスタマイズして使いたい (nsxivバージョン34であることが前提)
+# 8-26. 軽量画像ビュアnsxivをカスタマイズして使いたい
 sudo pkg install -y -q gmake git
 rehash # gmakeを認識させる
 mkdir ~/work
@@ -258,6 +258,7 @@ pushd ~/work
 git clone https://codeberg.org/nsxiv/nsxiv.git
 pushd ./nsxiv
 
+# nsxivバージョン34であることが前提
 grep -Eq '^[[:space:]]*VERSION[[:space:]]*=[[:space:]]*34([[:space:]]|$)' ./config.mk
 if ($status == 0) then
     cp ~/${ver}/nsxiv/config.def.h .
@@ -265,7 +266,6 @@ if ($status == 0) then
     gmake CC=cc
     sudo gmake install
 endif
-
 popd
 popd
 
