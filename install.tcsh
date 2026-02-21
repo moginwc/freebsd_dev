@@ -308,13 +308,14 @@ xdg-mime default userapp-feh.desktop image/jpeg
 
 mkdir -p ~/.local/share/applications
 cp ./.local/share/applications/* ~/.local/share/applications
-chmod +x ~/bin/conv_img_480s.tcsh
 
 mkdir -p ~/.local/share/Thunar/sendto
 cp ./.local/share/Thunar/sendto/* ~/.local/share/Thunar/sendto/
 
 mkdir -p ~/.config/Thunar
 cp ./.config/Thunar/uca.xml ~/.config/Thunar/
+cp ./bin/conv_img_480s.tcsh ~/bin/
+chmod +x ~/bin/conv_img_480s.tcsh
 cp ./.config/gtk-3.0/bookmarks ~/.config/gtk-3.0/
 
 mkdir -p ~/.config/xfce4/xfconf/xfce-perchannel-xml
