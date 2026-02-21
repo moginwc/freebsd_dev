@@ -155,14 +155,14 @@ sudo pkg install -y -q autocutsel
 sudo mv /etc/motd.template /etc/motd.template.old
 sudo touch /etc/motd.template
 
+# 8-2. ハングル⽂字や簡体字・繁体字、絵⽂字を表⽰させたい
+sudo pkg install -y -q noto-sans-jp noto-emoji
+
 # 8-6.chromium（ウェブブラウザ）を使用したい
 sudo pkg install -y -q chromium webfonts
 mkdir -p ~/Downloads
 mkdir -p ~/.config/chromium/Default
 cp -r ./.config/chromium/Default ~/.config/chromium/
-
-# 8-2. ハングル⽂字や簡体字・繁体字、絵⽂字を表⽰させたい
-sudo pkg install -y -q noto-sans-jp noto-emoji
 
 # 9-1.デスクトップに、アプリを起動するランチャーを表⽰させたい
 # 9-2.ランチャーに、システム負荷やバッテリー状態を表⽰させたい
