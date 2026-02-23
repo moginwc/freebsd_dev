@@ -270,15 +270,15 @@ popd
 popd
 
 # 端末エミュレータのインストールと設定 (8-25. mltermを使いたい コンパイル)
-sudo git clone https://git.FreeBSD.org/ports.git /usr/ports
-cd /usr/ports
-sudo git checkout 2025Q2
-sudo mkdir -p /var/db/ports/x11_mlterm/
-sudo cp ~/${ver}/var_db_ports_x11_mlterm_options /var/db/ports/x11_mlterm/options 
-cd /usr/ports/x11/mlterm
-sudo env BATCH=yes make
-sudo env BATCH=yes make reinstall
-cd ~/${ver}
+##sudo git clone https://git.FreeBSD.org/ports.git /usr/ports
+##cd /usr/ports
+##sudo git checkout 2025Q2
+##sudo mkdir -p /var/db/ports/x11_mlterm/
+##sudo cp ~/${ver}/var_db_ports_x11_mlterm_options /var/db/ports/x11_mlterm/options 
+##cd /usr/ports/x11/mlterm
+##sudo env BATCH=yes make
+##sudo env BATCH=yes make reinstall
+##cd ~/${ver}
 
 # サンプル画像のコピー
 mkdir ~/Pictures
