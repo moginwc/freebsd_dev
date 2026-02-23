@@ -168,6 +168,8 @@ cp -r ./.config/chromium/Default ~/.config/chromium/
 # 9-2.ランチャーに、システム負荷やバッテリー状態を表示させたい
 cp /usr/local/lib/firefox/browser/chrome/icons/default/default32.png ~/icons/firefox.png
 magick /usr/local/share/icons/hicolor/64x64/apps/chrome.png -resize 32x32 ~/icons/chrome.png
+magick /usr/local/share/icons/hicolor/48x48/apps/org.xfce.terminal.png -crop 42x40+3+4 ~/icons/xfce4-terminal.png
+
 sudo pkg install -y -q xload
 sudo pkg install -y -q xbatt
 
