@@ -17,6 +17,7 @@ uim-toolbar-gtk3 -1-1 &
 
 xset r rate 250 40
 xset m 5 3
+xset s off -dpms s noblank
 xrdb -merge ~/.Xresources
 xkbcomp -I$HOME/.xkb ~/.xkb/keymap/mykbd $DISPLAY
 
