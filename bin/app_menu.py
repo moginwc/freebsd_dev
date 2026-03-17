@@ -113,7 +113,7 @@ for i, (name, cmd) in enumerate(MENU):
     if name != "":
 
         # 影の部分を描画する
-        canvas.create_rectangle(x1+4, y1+4, x2+4, y2+4, fill=BLACK, width=0)
+        canvas.create_rectangle(x1+2, y1+2, x2+2, y2+2, fill=BLACK, width=0)
 
         # 枠全体を1pxごとに塗りつぶす
         draw_dither(canvas, x1, y1, x2, y2, WHITE, BLACK)
