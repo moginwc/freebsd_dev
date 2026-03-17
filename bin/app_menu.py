@@ -5,8 +5,8 @@ import subprocess
 # 画面設定
 #-------------------------------
 WIDTH = 640
-HEIGHT = 352
-ITEM_HEIGHT = 32
+HEIGHT = 360
+ITEM_HEIGHT = 34
 START_Y = 48
 
 WHITE = "#ecf3f3"
@@ -49,7 +49,7 @@ canvas.pack()
 #-------------------------------
 
 # 黒色の外枠
-canvas.create_rectangle( 0, 0, 640, 352, fill=BLACK, outline="")
+canvas.create_rectangle( 0, 0, 640, 360, fill=BLACK, outline="")
 
 # 4x4パターン画像を作る
 tile = 4
@@ -66,7 +66,7 @@ for y in range(tile):
         tile_img.put(data[y][x], (x, y))
 
 # 画面にタイル敷き詰め
-for y in range(16, 336, tile):
+for y in range(16, 344, tile):
     for x in range(2, WIDTH-6, tile):
         canvas.create_image(x, y, image=tile_img, anchor="nw")
 
@@ -103,12 +103,12 @@ for i, (name, cmd) in enumerate(MENU):
         y1 = START_Y + i*ITEM_HEIGHT
         y2 = y1 + 24
         x1 = 40
-        x2 = x1 + 16 * 15 + 8
+        x2 = x1 + 16 * 16
     else:
         y1 = START_Y + (i-8)*ITEM_HEIGHT
         y2 = y1 + 24
         x1 = 340
-        x2 = x1 + 16 * 15 + 8
+        x2 = x1 + 16 * 16
 
     if name != "":
 
@@ -122,7 +122,7 @@ for i, (name, cmd) in enumerate(MENU):
         rect_id = canvas.create_rectangle(x1+4, y1+4, x2-4, y2-4, fill=WHITE, width=0)
 
         # テキストメニューの設定
-        text_id = canvas.create_text( x1+4, (y1+y2)//2, text=name, fill=BLACK, font=("IPAGothic", 12), anchor="w")
+        text_id = canvas.create_text( x1+4, (y1+y2)//2-1, text=name, fill=BLACK, font=("IPAGothic", 12), anchor="w")
 
         items.append((x1, y1, x2, y2, rect_id, text_id, cmd))
 
