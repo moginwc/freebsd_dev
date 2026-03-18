@@ -4,7 +4,7 @@ ffmpeg \
   -f lavfi -i color=color=black:size=640x240 \
   -t 00:00:30 \
   -vf "drawtext=fontfile=/usr/local/share/fonts/ipa/ipag.otf: \
-      text='%{localtime}': fontsize=32: fontcolor=white: x=16: y=16" \
+      text='%{localtime}': fontsize=32: fontcolor=white: x=48: y=48" \
   -c:v libx264 -c:a aac -shortest output.mp4
 
 # 時刻＋波形付き録音
@@ -15,7 +15,7 @@ ffmpeg \
     [0:a]showwaves=s=640x120:mode=line:rate=25:colors=lime[wave]; \
     [1:v][wave]overlay=0:H/2, \
     drawtext=fontfile=/usr/local/share/fonts/ipa/ipag.otf: \
-      text='%{localtime}':fontsize=32:fontcolor=white:x=16:y=16\
+      text='%{localtime}':fontsize=32:fontcolor=white:x=48:y=48\
   " \
   -c:v libx264 -c:a aac \
   -t 00:00:30 \
