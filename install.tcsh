@@ -8,7 +8,7 @@
 set paramfile = "/tmp/installer.$$"
 
 # リポジトリ名
-set ver = "freebsd_dev"
+set ver = "freebsd144"
 
 # インストール選択画面の表示
 set selected = `dialog \
@@ -294,7 +294,7 @@ cp /usr/local/share/doc/ImageMagick-7/images/mountains*.jpg ~/Pictures/
 sudo pkg install -y -q gimp
 
 # 8-17.QGIS(地理空間情報の閲覧、編集、分析)を使いたい
-sudo pkg install -y -q qgis open-sans
+sudo pkg install -y -q qgis
 cp line.csv point.csv ~
 
 # 7-5.FreeBSDから、Windowsにリモートデスクトップ経由で接続したい
