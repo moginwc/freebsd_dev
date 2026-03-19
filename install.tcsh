@@ -60,13 +60,10 @@ sed -i '' 's/^##//g' ~/.login
 sudo pkg install -y -q xorg
 
 # ウィンドウマネージャをインストールする
-sudo pkg install -y -q fvwm
 mkdir -p ~/icons
-cp /usr/local/share/fvwm/pixmaps/programs.xpm ~/icons
-cp /usr/local/share/fvwm/pixmaps/xterm-sol.xpm ~/icons
+cp ./third_party/programs.xpm ~/icons
 sudo pkg install -y -q ImageMagick7
 magick ~/icons/programs.xpm -trim +repage -scale 200% ~/icons/programs.png
-magick ~/icons/xterm-sol.xpm -crop 44x34+5+2 ~/icons/xterm-sol.png
 sudo pkg install -y -q fvwm3
 sudo pkg install -y -q ja-font-ipa
 
@@ -84,6 +81,8 @@ sed -i '' 's/^##//g' ~/.fvwm2rc
 # 端末エミュレータのインストールと設定 (8-25. mltermを使いたい いったんpkg版をインストール)
 sudo pkg install -y -q mlterm
 cp -r ./.mlterm ~
+cp ./third_party/xterm-sol.xpm ~/icons
+magick ~/icons/xterm-sol.xpm -crop 44x34+5+2 ~/icons/xterm-sol.png
 
 # (9-13.)GTK系アプリのデフォルトフォントを変更したい
 cp ./.gtkrc-2.0 ~
