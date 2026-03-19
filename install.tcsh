@@ -144,7 +144,7 @@ endif
 
 # 6-7.NumLockを効かせたい
 if (" ${selected:q} " =~ "* enable_numlock *") then
-	sudo pkg install -y numlockx
+	sudo pkg install -y -q numlockx
 	sed -i '' 's/^#numlock#//g' ~/.xinitrc
 endif
 
