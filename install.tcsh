@@ -189,6 +189,12 @@ cp -r ./html ~
 sudo cp ./root_boot.config /boot.config
 
 # UEFIブート向け
+grep '^boot_mute=' /boot/loader.conf > /dev/null
+if ( $status == 0 ) then
+    sudo sed -i '' 's/^boot_mute=.*/boot_mute="YES"/' /boot/loader.conf
+else
+    echo 'boot_mute="YES"' | sudo tee -a /boot/loader.conf
+endif
 grep '^splash=' /boot/loader.conf > /dev/null
 if ( $status == 0 ) then
     sudo sed -i '' 's/^splash=.*/splash="\/boot\/images\/freebsd-brand-rev.png"/' /boot/loader.conf
