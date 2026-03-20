@@ -20,3 +20,21 @@ ffmpeg \
   -c:v libx264 -c:a aac \
   -t 00:00:30 \
   output_with_wave.mp4
+
+# 10分ごとにファイルを分割して長時間録音
+ffmpeg \
+    -f oss -i /dev/dsp0 \
+    -ac 1 -ar 22050 -b:a 32k \
+    -f segment \
+    -segment_time 600 \
+    -strftime 1 \
+    ./radio_%Y%m%d_%H%M%S.mp3
+
+# 10分ごとにファイルを分割して録音し、直近の12時間のみ保存
+ffmpeg \
+    -f oss -i /dev/dsp0 \
+    -ac 1 -ar 22050 -b:a 32k \
+    -f segment \
+    -segment_time 600 \
+    -segment_wrap 72 \
+    radio_%03d.mp3
