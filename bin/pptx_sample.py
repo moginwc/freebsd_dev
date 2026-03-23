@@ -86,7 +86,6 @@ def add_textbox(
     if border_color is None:
         line.fill.background()  # 枠線なし
     else:
-        from pptx.enum.dml import MSO_LINE_DASH_STYLE
 
         line.fill.solid()
         line.fill.fore_color.rgb = RGBColor(*border_color)
