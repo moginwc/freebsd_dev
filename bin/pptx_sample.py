@@ -165,7 +165,7 @@ add_textbox(
     left=1, top=0.5,
     height=1.5, width=27.7,
     font_size=24,
-	font_color=(50, 50, 50),
+    font_color=(50, 50, 50),
 )
 
 # --- 見出しの下の線 ---
@@ -196,7 +196,7 @@ add_textbox(
     left=1, top=0.5,
     height=1.5, width=27.7,
     font_size=24,
-	font_color=(50, 50, 50),
+    font_color=(50, 50, 50),
 )
 
 # 保存
