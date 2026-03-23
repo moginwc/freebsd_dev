@@ -155,7 +155,7 @@ prs = Presentation()
 prs.slide_width = Cm(29.7)
 prs.slide_height = Cm(21.0)
 
-# 空白スライド
+# --- 1ページ目 空白スライド ---
 slide = prs.slides.add_slide(prs.slide_layouts[6])
 
 # --- 見出し ---
@@ -184,6 +184,19 @@ add_textbox(
     font_size=16,
     font_color=(50, 50, 50),
     border_color=(220, 220, 220),
+)
+
+# --- 2ページ目 空白スライド ---
+slide = prs.slides.add_slide(prs.slide_layouts[6])
+
+# --- 見出し ---
+add_textbox(
+    slide,
+    "1-2. 2ページ目のタイトル",
+    left=1, top=0.5,
+    height=1.5, width=27.7,
+    font_size=24,
+	font_color=(50, 50, 50),
 )
 
 # 保存
