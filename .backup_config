@@ -20,3 +20,5 @@ usr/local/etc/pkg/repos/quarterly.conf
 etc/pf.conf
 usr/local/etc/nginx/nginx.conf
 etc/jail.conf
+usr/local/etc/postfix/main.cf
+usr/local/etc/dovecot/dovecot.conf
