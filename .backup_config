@@ -19,6 +19,9 @@ etc/pkg/FreeBSD.conf
 usr/local/etc/pkg/repos/quarterly.conf
 etc/pf.conf
 usr/local/etc/nginx/nginx.conf
+usr/local/etc/nginx/nginx.conf.org
 etc/jail.conf
 usr/local/etc/postfix/main.cf
+usr/local/etc/postfix/main.cf.org
 usr/local/etc/dovecot/dovecot.conf
+home/pcuser_ml
