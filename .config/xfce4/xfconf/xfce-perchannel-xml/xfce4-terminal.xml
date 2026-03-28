@@ -13,5 +13,4 @@
   <property name="binding-ambiguous-width" type="string" value="TERMINAL_AMBIGUOUS_WIDTH_BINDING_WIDE"/>
   <property name="color-palette" type="string" value="rgb(0,0,0);rgb(205,0,0);rgb(0,205,0);rgb(205,205,0);rgb(0,0,238);rgb(205,0,205);rgb(0,205,205);rgb(229,229,229);rgb(127,127,127);rgb(255,0,0);rgb(0,255,0);rgb(255,255,0);rgb(92,92,255);rgb(255,0,255);rgb(0,255,255);rgb(255,255,255)"/>
   <property name="misc-hyperlinks-enabled" type="bool" value="false"/>
-  <property name="last-details-view-visible-columns" type="string" value="THUNAR_COLUMN_DATE_MODIFIED,THUNAR_COLUMN_NAME,THUNAR_COLUMN_SIZE"/>
 </channel>
