@@ -350,6 +350,10 @@ sed -i '' 's/平文文書/テキストファイル/g' ~/.local/share/mime/packag
 sed -i '' 's/目的符号文書/オブジェクトファイル/g' ~/.local/share/mime/packages/freedesktop.org.xml
 update-mime-database ~/.local/share/mime
 
+# 15-12.カラーピッカー付き拡大鏡アプリを作成したい
+sudo pkg install -y -q py311-tkinter py311-pillow
+cp ./bin/pixel_loupe.py ~/bin
+
 # 7-3.Windowsやmacとファイル共有したい(SMB)
 sudo pkg install -y -q samba416
 sudo service samba_server enable
