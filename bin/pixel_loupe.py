@@ -47,8 +47,8 @@ class ColorMeter:
         self.value_label.place(x=236, y=192, width=160)
 
         # コメント
-        self.value_label2 = tk.Label(root, text="Ctrl+Shift+C：カラー値コピー", font=("IPAPGothic", 8), bg="#f6f6f6", anchor="e")
-        self.value_label2.place(x=0, y=226, width=412-16)
+        self.memo_label = tk.Label(root, text="Ctrl+Shift+C：カラー値コピー", font=("IPAPGothic", 8), bg="#f6f6f6", anchor="e")
+        self.memo_label.place(x=16, y=226, width=412-16-16)
 
         # キーイベント
         root.bind("<Control-Shift-C>", self.copy_to_clipboard)
