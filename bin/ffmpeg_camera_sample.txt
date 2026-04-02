@@ -34,7 +34,7 @@ mpv av://v4l2:/dev/video0 \
 # 外付けカメラの映像をそのまま見たい＋音声も聞きたい
 ffmpeg -f v4l2 -i /dev/video0 -f oss -i /dev/dsp4 \
   -c:v rawvideo -c:a pcm_s16le -f nut - | \
-mpv -
+  mpv -
 
 # 外付けカメラの映像をYouTubeで配信したい
 ffmpeg \
