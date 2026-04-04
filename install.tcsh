@@ -14,12 +14,13 @@ set ver = "freebsd144"
 set selected = `dialog \
 	--title "FreeBSD Custom Installer" \
     --stdout \
-	--checklist "Select your options:" 12 76 5 \
+	--checklist "Select your options:" 14 76 6 \
 	use_amdgpu "Use AMD GPU driver (Default: Intel GPU driver)" off \
 	use_re0 "LAN interface: re0 (Default: em0)" off \
 	use_jp_keyboard "Keyboard layout: 106 JP (Default: 101 US)" off \
 	enable_numlock "Enable NumLock for X (Default: Off)" off \
-	use_volume_keys "Use volume keys (Default: ALT+CTRL+↑,↓,M)" off`
+	use_volume_keys "Use volume keys (Default: ALT+CTRL+↑,↓,M)" off \
+    build_mlterm_uim "Build mlterm with uim (Default: pkg only)" off`
 
 # システム起動時に ntpdが起動するよう設定する (3.初期設定 ntpd)
 sudo service ntpd enable
@@ -277,15 +278,17 @@ popd
 popd
 
 # 端末エミュレータのインストールと設定 (8-25. mltermを使いたい コンパイル)
-##sudo git clone https://git.FreeBSD.org/ports.git /usr/ports
-##cd /usr/ports
-##sudo git checkout 2025Q2
-##sudo mkdir -p /var/db/ports/x11_mlterm/
-##sudo cp ~/${ver}/var_db_ports_x11_mlterm_options /var/db/ports/x11_mlterm/options 
-##cd /usr/ports/x11/mlterm
-##sudo env BATCH=yes make
-##sudo env BATCH=yes make reinstall
-##cd ~/${ver}
+if (" ${selected:q} " =~ "* build_mlterm_uim *") then
+    sudo git clone https://git.FreeBSD.org/ports.git /usr/ports
+    cd /usr/ports
+    sudo git checkout 2026Q1
+    sudo mkdir -p /var/db/ports/x11_mlterm/
+    sudo cp ~/${ver}/var_db_ports_x11_mlterm_options /var/db/ports/x11_mlterm/options 
+    cd /usr/ports/x11/mlterm
+    sudo env BATCH=yes make
+    sudo env BATCH=yes make reinstall
+    cd ~/${ver}
+endif
 
 # サンプル画像のコピー
 mkdir ~/Pictures
